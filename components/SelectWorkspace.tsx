@@ -46,7 +46,7 @@ export function SelectWorkspace() {
         />
         <div className="flex px-4 items-center">
           <span className="font-semibold text-gray-800">Foo inc.</span>
-          <div className="ml-2">
+          <div className="ml-8">
             <ChevronsUpDown size={16} color="rgb(148 163 184)" />
           </div>
         </div>

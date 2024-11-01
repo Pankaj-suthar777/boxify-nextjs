@@ -1,6 +1,7 @@
-import Sidebar, { SidebarItem } from "@/components/layout/Sidebar";
+import { SidebarItem } from "@/components/layout/SidebarItem";
 import type { Metadata } from "next";
 import { allNav } from "../page";
+import { Plus } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,14 +17,18 @@ export default function Layout({
     <div className="flex flex-1 w-full h-full justify-center">
       <div className="flex max-w-7xl w-full h-full">
         {/* Sidebar - 30% width and full height */}
-        <div className="w-[30%] h-full bg-gray-100 flex-shrink-0 overflow-auto">
-          <Sidebar>
-            <div className="relative">
-              {allNav.map((n, i) => (
-                <SidebarItem key={i} text={n.name} active={false} />
-              ))}
+        <div className="w-[30%] h-full flex-shrink-0 overflow-auto p-4">
+          <div className="flex justify-between items-center py-4">
+            <span className="font-semibold text-slate-700">Workspaces</span>
+            <div>
+              <Plus size={20} color="#334155" />
             </div>
-          </Sidebar>
+          </div>
+          <div className="relative">
+            {allNav.map((n, i) => (
+              <SidebarItem key={i} text={n.name} active={false} />
+            ))}
+          </div>
         </div>
 
         {/* Main content - 70% width and full height */}
