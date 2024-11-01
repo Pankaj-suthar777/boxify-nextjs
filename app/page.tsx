@@ -10,3 +10,9 @@ const Home = () => {
 };
 
 export default Home;
+
+export const allNav = [
+  { id: Math.floor(Math.random() * 100), name: "mycc" },
+  { id: Math.floor(Math.random() * 100), name: "mysccc" },
+  { id: Math.floor(Math.random() * 100), name: "myasccc" },
+];
