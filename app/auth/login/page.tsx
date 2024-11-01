@@ -1,5 +1,5 @@
 import { UserAuthForm } from "@/components/auth/UserAuthForm";
-import { MountainIcon } from "lucide-react";
+import { Box } from "lucide-react";
 import Link from "next/link";
 
 const LoginPage = () => {
@@ -10,9 +10,9 @@ const LoginPage = () => {
           <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
             <div className="absolute inset-0 bg-zinc-900" />
             <div className="z-[555] h-full flex justify-center w-full items-center">
-              <MountainIcon className="h-40 w-40" />
-              <span className="ml-4 text-white font-light text-3xl">
-                Swift Media
+              <Box className="h-40 w-40" />
+              <span className="ml-4 text-white font-semibold text-3xl">
+                Boxify
               </span>
             </div>
 
