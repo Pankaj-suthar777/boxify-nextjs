@@ -1,5 +1,5 @@
 "use client";
-import { Building2, ChevronsUpDown, Plus } from "lucide-react";
+import { Building2, ChevronsUpDown, CreditCard, Plus } from "lucide-react";
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { allNav } from "@/app/page";
@@ -57,7 +57,7 @@ export function SelectWorkspace() {
         {isOpen && (
           <motion.div
             ref={dropdownRef} // Attach the ref to the dropdown
-            className="absolute mx-4 mt-1 w-[400px] bg-white border rounded-lg shadow-lg top-10 right-8"
+            className="absolute mx-4 mt-1 w-[400px] bg-white border rounded-lg shadow-lg top-10 right-8 z-20"
             initial={{ opacity: 0, scale: 0.9 }} // Start with scale and opacity
             animate={{ opacity: 1, scale: 1 }} // Animate to full size and opacity
             exit={{ opacity: 0, scale: 0.9 }} // Scale down and fade out
@@ -78,9 +78,16 @@ export function SelectWorkspace() {
                     size={28}
                     color="white"
                   />
-                  <span className="font-semibold text-lg text-gray-800">
-                    Foo inc.
-                  </span>
+
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-lg text-gray-800">
+                      Foo inc.
+                    </span>
+                    <div className="flex gap-x-2 items-center">
+                      <CreditCard size={16} color="#475569" />
+                      <span className="text-xs text-slate-600">Free</span>
+                    </div>
+                  </div>
                 </div>
               </li>
               <Separator />
