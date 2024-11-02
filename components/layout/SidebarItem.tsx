@@ -3,12 +3,12 @@ import {
   Activity,
   Building2,
   ChevronDown,
+  CreditCard,
   PanelsLeftBottom,
-  Receipt,
   Settings,
 } from "lucide-react";
 import React, { ReactNode, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // Import necessary components from Framer Motion
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface ItemProps {
@@ -30,7 +30,7 @@ const workplacesOptions = [
     text: "Settings",
   },
   {
-    icon: <Receipt size={20} color="#475569" />,
+    icon: <CreditCard size={20} color="#475569" />,
     text: "Billing",
   },
 ];

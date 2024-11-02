@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 
-const Home = () => {
+const LandingPage = () => {
   return (
     <div className="bg-slate-200">
       <Button>Hi there!</Button>
@@ -9,7 +9,7 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default LandingPage;
 
 export const allNav = [
   { id: Math.floor(Math.random() * 100), name: "mycc" },

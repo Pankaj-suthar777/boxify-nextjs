@@ -7,14 +7,14 @@ import { Separator } from "./ui/separator";
 
 export function SelectWorkspace() {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
   // Handle click outside to close dropdown
-  const handleClickOutside = (event) => {
+  const handleClickOutside = (event: any) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
     }
