@@ -6,12 +6,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { CreateWorkspace } from "@/components/CreateWorkspace";
 import Link from "next/link";
+import { CreateWorkspaceDialog } from "@/components/CreateWorkspaceDialog";
 
 const HomeScreen = () => {
   return (
-    <div className="px-4 py-8 relative min-h-[80vh]">
+    <div className="px-4 py-8 min-h-[80vh]">
       <div>
         <div
           className={`mx-4 flex items-center cursor-pointer rounded-lg transition-colors duration-300 ease-in-out gap-4`}
@@ -38,7 +38,7 @@ const HomeScreen = () => {
             Your boards
           </span>
         </div>
-        <div className="grid grid-cols-4 gap-4 mt-6">
+        <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 mt-6">
           {[1, 2, 3, 4, 5, 6].map((ig) => (
             <Link href={"/home/workspaces/" + ig} key={ig}>
               <img
@@ -48,7 +48,7 @@ const HomeScreen = () => {
               />
             </Link>
           ))}
-          <CreateWorkspace className="">
+          <CreateWorkspaceDialog>
             <div className="w-full h-full aspect-video rounded-md bg-slate-100 flex justify-center items-center relative cursor-pointer">
               <TooltipProvider>
                 <Tooltip>
@@ -68,7 +68,7 @@ const HomeScreen = () => {
                 </Tooltip>
               </TooltipProvider>
 
-              <div className="flex justify-center flex-col items-center">
+              <div className="flex justify-center flex-col items-center h-full w-full aspect-video rounded-md">
                 <p className="text-sm text-slate-600 font-semibold">
                   Create new board
                 </p>
@@ -77,7 +77,7 @@ const HomeScreen = () => {
                 </p>
               </div>
             </div>
-          </CreateWorkspace>
+          </CreateWorkspaceDialog>
         </div>
       </div>
     </div>

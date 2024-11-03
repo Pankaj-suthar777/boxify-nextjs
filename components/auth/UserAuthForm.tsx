@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { signIn } from "next-auth/react";
 import {
   Form,
   FormControl,
@@ -18,6 +18,8 @@ import { cn } from "@/lib/utils";
 import GoogleSigninButton from "./GoogleSigninButton";
 import GithubSigninButton from "./GithubSigninButton";
 import Link from "next/link";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z
@@ -42,9 +44,19 @@ export function UserAuthForm() {
       password: "",
     },
   });
-
-  async function onSubmit(data: z.infer<typeof formSchema>) {}
-
+  const router = useRouter();
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    const result = await signIn("credentials", {
+      redirect: false,
+      ...data,
+    });
+    if (result?.error) {
+      console.log(result.error);
+      toast({ title: result.error, variant: "destructive" });
+    } else {
+      router.replace("/");
+    }
+  }
   return (
     <div className={cn("grid gap-6")}>
       <Form {...form}>
@@ -84,7 +96,7 @@ export function UserAuthForm() {
                 </FormItem>
               )}
             />
-            <Button className="mt-2" loading={false}>
+            <Button className="mt-2" loading={form.formState.isSubmitting}>
               Login
             </Button>
             <div className="relative my-2">

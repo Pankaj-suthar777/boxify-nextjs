@@ -16,6 +16,8 @@ import { PasswordInput } from "@/components/custom/password-input";
 import { cn } from "@/lib/utils";
 import GoogleSigninButton from "./GoogleSigninButton";
 import GithubSigninButton from "./GithubSigninButton";
+import axios from "axios";
+import { toast } from "@/hooks/use-toast";
 
 const formSchema = z
   .object({
@@ -50,7 +52,19 @@ export function SignUpForm() {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {}
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    try {
+      const res = await axios.post("/api/auth/register", {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
+
+      toast({ title: res.data.message });
+    } catch (error: any) {
+      toast({ title: error.message, variant: "destructive" });
+    }
+  }
 
   return (
     <div className={cn("grid gap-6")}>
@@ -109,7 +123,7 @@ export function SignUpForm() {
                 </FormItem>
               )}
             />
-            <Button className="mt-2" loading={false}>
+            <Button className="mt-2" loading={form.formState.isSubmitting}>
               Create Account
             </Button>
 

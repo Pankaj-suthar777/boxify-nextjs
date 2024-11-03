@@ -39,9 +39,9 @@ export function SidebarItem({ text, active }: ItemProps) {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div
-        className={`rounded-full md:w-full w-fit flex items-center py-2 font-medium cursor-pointer transition-colors group justify-between ${
+        className={`rounded-full w-full flex items-center py-2 font-medium cursor-pointer transition-colors group justify-between ${
           active
             ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
             : ""

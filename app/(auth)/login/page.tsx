@@ -39,7 +39,7 @@ const LoginPage = () => {
               <UserAuthForm />
               <p className="px-8 text-center text-sm text-muted-foreground">
                 Don&apos;t have an account{" "}
-                <Link className="underline" href={"/auth/register"}>
+                <Link className="underline" href={"/register"}>
                   sign up?
                 </Link>
               </p>

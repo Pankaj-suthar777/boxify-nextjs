@@ -2,7 +2,6 @@ import { SidebarItem } from "@/components/layout/SidebarItem";
 import type { Metadata } from "next";
 import { CreateWorkspace } from "@/components/CreateWorkspace";
 import { Plus } from "lucide-react";
-import Header from "@/components/layout/Header";
 import { allNav } from "@/app/page";
 
 export const metadata: Metadata = {
@@ -20,7 +19,7 @@ export default function Layout({
       <div className="flex flex-1 w-full h-full justify-center relative">
         <div className="flex max-w-7xl w-full h-full">
           {/* Sidebar - 30% width and full height */}
-          <div className="w-[30%] h-full flex-shrink-0 overflow-auto p-4">
+          <div className="w-[30%] h-full flex-shrink-0 overflow-auto p-4 lg:block hidden">
             <div className="flex justify-between items-center py-4">
               <span className="font-semibold text-slate-700">Workspaces</span>
               <div>
@@ -41,7 +40,7 @@ export default function Layout({
           </div>
 
           {/* Main content - 70% width and full height */}
-          <div className="w-[70%] h-full overflow-auto">{children}</div>
+          <div className="lg:w-[70%] h-full overflow-auto">{children}</div>
         </div>
       </div>
     </div>
