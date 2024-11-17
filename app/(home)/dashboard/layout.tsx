@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { CreateWorkspace } from "@/components/CreateWorkspace";
 import { Plus } from "lucide-react";
 import { allNav } from "@/app/page";
+import Header from "@/components/layout/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +16,8 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <div className="">
+      <Header />
       <div className="flex flex-1 w-full h-full justify-center relative">
         <div className="flex max-w-7xl w-full h-full">
           {/* Sidebar - 30% width and full height */}
@@ -34,7 +36,7 @@ export default function Layout({
             </div>
             <div className="relative">
               {allNav.map((n, i) => (
-                <SidebarItem key={i} text={n.name} active={false} />
+                <SidebarItem id={n.id} key={i} text={n.name} active={false} />
               ))}
             </div>
           </div>

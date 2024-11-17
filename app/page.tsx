@@ -12,7 +12,7 @@ const LandingPage = () => {
 export default LandingPage;
 
 export const allNav = [
-  { id: Math.floor(Math.random() * 100), name: "mycc" },
-  { id: Math.floor(Math.random() * 100), name: "mysccc" },
-  { id: Math.floor(Math.random() * 100), name: "myasccc" },
+  { id: 12, name: "College Work" },
+  { id: 14, name: "My Project Work" },
+  { id: 13, name: "Python Daily Learning" },
 ];

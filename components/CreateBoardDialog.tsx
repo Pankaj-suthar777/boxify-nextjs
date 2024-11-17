@@ -13,11 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export function CreateWorkspaceDialog({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function CreateBoardDialog({ children }: { children: React.ReactNode }) {
   const [text, setText] = React.useState("");
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 

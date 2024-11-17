@@ -7,9 +7,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Link from "next/link";
-import { CreateWorkspaceDialog } from "@/components/CreateWorkspaceDialog";
+import { CreateBoardDialog } from "@/components/CreateBoardDialog";
 
-const HomeScreen = () => {
+const WorkspacePage = () => {
   return (
     <div className="px-4 py-8 min-h-[80vh]">
       <div>
@@ -31,7 +31,7 @@ const HomeScreen = () => {
         </div>
       </div>
       <Separator className="my-4 mx-4" />
-      <div className="mx-8">
+      <div className="md:mx-8">
         <div className="flex gap-2 items-center">
           <User2 size={28} color="#1e293b" />
           <span className="font-semibold text-2xl text-slate-800">
@@ -40,7 +40,7 @@ const HomeScreen = () => {
         </div>
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 mt-6">
           {[1, 2, 3, 4, 5, 6].map((ig) => (
-            <Link href={"/home/workspaces/" + ig} key={ig}>
+            <Link href={"/board/" + ig} key={ig}>
               <img
                 alt=""
                 src={`/images/${ig}.jpg`}
@@ -48,7 +48,7 @@ const HomeScreen = () => {
               />
             </Link>
           ))}
-          <CreateWorkspaceDialog>
+          <CreateBoardDialog>
             <div className="w-full h-full aspect-video rounded-md bg-slate-100 flex justify-center items-center relative cursor-pointer">
               <TooltipProvider>
                 <Tooltip>
@@ -77,11 +77,11 @@ const HomeScreen = () => {
                 </p>
               </div>
             </div>
-          </CreateWorkspaceDialog>
+          </CreateBoardDialog>
         </div>
       </div>
     </div>
   );
 };
 
-export default HomeScreen;
+export default WorkspacePage;

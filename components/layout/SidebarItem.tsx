@@ -3,17 +3,17 @@ import {
   Activity,
   Building2,
   ChevronDown,
-  CreditCard,
   PanelsLeftBottom,
   Settings,
 } from "lucide-react";
 import React, { ReactNode, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { usePathname, useRouter } from "next/navigation";
 
 interface ItemProps {
   text: string;
-  active?: boolean;
+  id: number;
 }
 
 const workplacesOptions = [
@@ -29,23 +29,21 @@ const workplacesOptions = [
     icon: <Settings size={20} color="#475569" />,
     text: "Settings",
   },
-  {
-    icon: <CreditCard size={20} color="#475569" />,
-    text: "Billing",
-  },
+  // {
+  //   icon: <CreditCard size={20} color="#475569" />,
+  //   text: "Billing",
+  // },
 ];
 
-export function SidebarItem({ text, active }: ItemProps) {
+export function SidebarItem({ text, id }: ItemProps) {
   const [openMenu, setOpenMenu] = useState(false);
+  const [workspaceId] = useState(id);
+  const pathname = usePathname();
 
   return (
     <div className="flex flex-col w-full">
       <div
-        className={`rounded-full w-full flex items-center py-2 font-medium cursor-pointer transition-colors group justify-between ${
-          active
-            ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-            : ""
-        }`}
+        className={`rounded-full w-full flex items-center py-2 font-medium cursor-pointer transition-colors group justify-between`}
         onClick={() => setOpenMenu(!openMenu)}
       >
         <div className="flex items-center">
@@ -53,6 +51,9 @@ export function SidebarItem({ text, active }: ItemProps) {
             className="bg-violet-600 p-2 rounded-md box-content"
             size={24}
             color="white"
+            onClick={() => {
+              console.log("workspaceId", workspaceId);
+            }}
           />
           <span className="text-lg font-semibold ml-3">{text}</span>
         </div>
@@ -73,9 +74,23 @@ export function SidebarItem({ text, active }: ItemProps) {
             transition={{ duration: 0.2 }}
           >
             <div className="py-2">
-              {workplacesOptions.map((w, i) => (
-                <WorkspacesBlock key={i} {...w} />
-              ))}
+              {workplacesOptions.map((w, i) => {
+                const isActive =
+                  pathname === "/dashboard/" + id + "/" + w.text.toLowerCase();
+                console.log(
+                  pathname,
+                  "||",
+                  "/dashboard/" + id + "/" + w.text.toLowerCase()
+                );
+                return (
+                  <WorkspacesBlock
+                    active={isActive}
+                    id={workspaceId}
+                    key={i}
+                    {...w}
+                  />
+                );
+              })}
             </div>
           </motion.div>
         )}
@@ -84,9 +99,29 @@ export function SidebarItem({ text, active }: ItemProps) {
   );
 }
 
-const WorkspacesBlock = ({ icon, text }: { text: string; icon: ReactNode }) => {
+const WorkspacesBlock = ({
+  icon,
+  text,
+  id,
+  active,
+}: {
+  text: string;
+  icon: ReactNode;
+  id: number;
+  active: boolean;
+}) => {
+  const router = useRouter();
   return (
-    <div className="px-8 flex gap-2 hover:bg-slate-100 p-2 duration-200 cursor-pointer rounded-md items-center">
+    <div
+      className={cn(
+        "px-8 flex gap-2 hover:bg-slate-100 p-2 duration-200 cursor-pointer rounded-md items-center",
+        { "bg-slate-100": active }
+      )}
+      onClick={() => {
+        const route = text.toLowerCase();
+        router.push("/dashboard/" + id + "/" + route);
+      }}
+    >
       {icon}
       <span className="font-semibold text-sm text-[#475569]">{text}</span>
     </div>
